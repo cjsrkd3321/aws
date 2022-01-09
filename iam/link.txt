@@ -1,0 +1,12 @@
+IAM Condition 모음
+
+"StringEquals": {
+					"aws:PrincipalOrgID": "o-chql2jxe8m"
+				},
+"StringLike": {
+                    "aws:PrincipalArn": "arn:aws:iam::${aws:PrincipalAccount}:role/service-role/AccessAnalyzerMonitorServiceRole*"
+                }
+
+
+AWS IAM으로 작업하는 서비스 종류(어떤게 되나 안되나 볼 수 있음) : https://docs.aws.amazon.com/ko_kr/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html
+서비스 별로 사용 가능한 키 볼 수 있음 : https://docs.aws.amazon.com/ko_kr/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html

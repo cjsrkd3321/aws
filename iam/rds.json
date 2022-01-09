@@ -1,0 +1,82 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "VisualEditor0",
+      "Effect": "Allow",
+      "Action": "rds:CreateDBCluster",
+      "Resource": [
+        "arn:aws:rds:ap-northeast-2:000663531752:cluster:test*",
+        "arn:aws:rds:ap-northeast-2:000663531752:cluster-pg:default.aurora-mysql5.7",
+        "arn:aws:rds:ap-northeast-2:000663531752:subgrp:default-vpc-0a050dcbace0f3bd8"
+      ],
+      "Condition": {
+        "StringEquals": {
+          "rds:DatabaseEngine": "aurora-mysql",
+          "aws:PrincipalTag/Department": "rex"
+        },
+        "Bool": {
+          "rds:StorageEncrypted": "true"
+        }
+      }
+    },
+    {
+      "Sid": "VisualEditor1453",
+      "Effect": "Allow",
+      "Action": "rds:DeleteDBInstance",
+      "Resource": "arn:aws:rds:ap-northeast-2:000663531752:db:test*",
+      "Condition": {
+        "StringEquals": {
+          "rds:DatabaseEngine": "aurora-mysql",
+          "aws:PrincipalTag/Department": "rex"
+        }
+      }
+    },
+    {
+      "Sid": "VisualEditor1",
+      "Effect": "Allow",
+      "Action": "rds:AddTagsToResource",
+      "Resource": "arn:aws:rds:ap-northeast-2:000663531752:*:test*",
+      "Condition": {
+        "StringEquals": {
+          "aws:PrincipalTag/Department": "rex",
+          "aws:RequestTag/type": "mysql",
+          "aws:RequestTag/asdf": "asdf"
+        }
+      }
+    },
+    {
+      "Sid": "VisualEditor2",
+      "Effect": "Allow",
+      "Action": [
+        "iam:GetRole",
+        "rds:StopDBCluster",
+        "ram:GetResourceShareAssociations",
+        "iam:ListRoles",
+        "iam:CreateRole",
+        "ec2:DescribeSecurityGroups",
+        "iam:PassRole",
+        "ram:GetResourceShares",
+        "rds:Describe*",
+        "rds:ListTagsForResource",
+        "ec2:DescribeVpcs",
+        "rds:CreateDBInstance",
+        "kms:ListAliases",
+        "application-autoscaling:DescribeScalingActivities",
+        "application-autoscaling:DescribeScalingPolicies",
+        "kms:DescribeKey",
+        "ec2:DescribeAccountAttributes",
+        "ec2:DescribeSubnets",
+        "kms:CreateGrant",
+        "rds:DeleteDBCluster"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "VisualEditor3",
+      "Effect": "Allow",
+      "Action": "monitoring:DescribeAlarms",
+      "Resource": "*"
+    }
+  ]
+}
