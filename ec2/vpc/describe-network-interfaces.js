@@ -52,6 +52,7 @@ const results = networkInterfaces.map((networkInterface) => {
     Association: { PublicIp } = {},
     Attachment: { InstanceId, InstanceOwnerId } = {},
     InterfaceType,
+
     NetworkInterfaceId,
     OwnerId,
     PrivateIpAddresses,
@@ -75,6 +76,8 @@ const results = networkInterfaces.map((networkInterface) => {
     ),
   };
 });
+
+// console.log(results);
 
 // TODO: 향후에 create 하는 기능만 남겨두기
 const createSecurityGroupRule = async ({
@@ -203,8 +206,8 @@ const createSecurityGroupRule = async ({
 };
 
 const ingressRule = {
-  srcEniId: 'eni-0b489116dcef1ee1e',
-  dstEniId: 'eni-0703790e81e0f8259',
+  srcEniId: 'eni-013aa4bfaa4c9d7f6',
+  dstEniId: 'eni-0ca43fc6d4a9ec01e',
   FromPort: 3000,
   ToPort: 4000,
   IpProtocol: 'tcp',
